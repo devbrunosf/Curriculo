@@ -1,0 +1,459 @@
+@font-face {
+    font-family: "Baloo 2";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/baloo2/v2/wXKrE3kTposypRyd51jcAA.woff2) format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/poppins/v15/pxiGyp8kv8JHgFVrLPTucHtA.woff2) format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin display($display, $direction, $content, $align) {
+    display: $display;
+    align-items: $align;
+    justify-content: $content;
+    flex-direction: $direction;
+}
+
+@mixin color($bgcolor, $color, $border) {
+    background-color: $bgcolor;
+    color: $color;
+    border: $border;
+}
+
+@mixin font($family, $size, $weight) {
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin position($position, $top, $right, $bottom, $left) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+$green: #2c8560;
+$valid: #00ffa1;
+$invalid: #ff002f;
+* {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: sticky;
+    scroll-behavior: smooth;
+    background: #f5f5f5;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    @include size(100vw, 80px);
+    @include display(flex, row, space-between, center);
+    @include color(transparent, null, null);
+    @include position(fixed, 0, null, null, 0);
+    padding: 0px 60px;
+    overflow: hidden;
+    z-index: 50;
+    div {
+        @include size(auto, auto);
+        b {
+            @include font("baloo 2", 27px, 100);
+            @include color(transparent, #fff, null);
+            cursor: pointer;
+        }
+    }
+    .hamburguer {
+        opacity: 0;
+    }
+    ul {
+        @include size(auto, auto);
+        @include display(flex, row, space-between, center);
+        column-gap: 25px;
+        li:nth-child(1) {
+            @include size(120px, 35px);
+            text-align: center;
+            display: none;
+            opacity: 0;
+            cursor: pointer;
+            a {
+                @include font("poppins", 19px, 700);
+                line-height: 35px;
+                letter-spacing: 1px;
+                @include color(transparent, #fff, null);
+                cursor: pointer;
+            }
+        }
+        li:nth-child(2) {
+            @include size(120px, 35px);
+            @include color(transparent, #fff, 1px solid #fff);
+            border-radius: 3px;
+            text-align: center;
+            cursor: pointer;
+            a {
+                @include font("poppins", 17px, 700);
+                line-height: 35px;
+                @include color(transparent, #fff, null);
+                cursor: pointer;
+            }
+            &:hover {
+                background-color: #fff;
+                transition: 0.5s;
+                a {
+                    color: #000;
+                }
+            }
+            &:not(:hover) {
+                transition: 0.5s;
+            }
+        }
+        li:nth-child(3) {
+            @include size(120px, 35px);
+            @include color(#fff, #000, 1px solid #fff);
+            border-radius: 3px;
+            text-align: center;
+            cursor: pointer;
+            a {
+                @include font("poppins", 17px, 700);
+                line-height: 35px;
+                @include color(transparent, #000, null);
+                cursor: pointer;
+            }
+            &:hover {
+                background-color: transparent;
+                transition: 0.5s;
+                a {
+                    color: #fff;
+                }
+            }
+            &:not(:hover) {
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+.header {
+    @include size(100vw, 60px);
+    @include color(#f5f5f5, null, null);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+    div {
+        b {
+            color: $green;
+        }
+    }
+    ul {
+        li:nth-child(1) {
+            a {
+                color: $green;
+            }
+        }
+        li:nth-child(2) {
+            border: 1px solid $green;
+            a {
+                color: $green;
+            }
+            &:hover {
+                background-color: $green;
+                border: 1px solid $green;
+                a {
+                    color: #fff;
+                    font-weight: 700;
+                }
+            }
+            &:not(:hover) {
+                transition: 0.5s;
+            }
+        }
+        li:nth-child(3) {
+            background-color: $green;
+            border: 1px solid $green;
+            a {
+                color: #fff;
+                font-weight: 700;
+            }
+            &:hover {
+                border: 1px solid $green;
+                a {
+                    color: $green;
+                }
+            }
+            &:not(:hover) {
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+.step1 {
+    @include size(100vw, 100vh);
+    @include display(flex, row, center, center);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../img/pexels-photo-247791.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+    .container {
+        @include size(80vw, 100%);
+        @include display(flex, column, center, center);
+        p {
+            @include size(100%, auto);
+            span {
+                @include size(100%, auto);
+                display: block;
+                @include color(null, #fff, null);
+                @include font("poppins", calc(0.7em + 1vw), 600);
+                line-height: 55px;
+                letter-spacing: 2px;
+            }
+            span:nth-child(4) {
+                font-size: calc(2.1em + 1vw);
+                letter-spacing: 5px;
+                margin-top: 25px;
+            }
+        }
+    }
+}
+
+aside {
+    @include size(100vw, 100vh);
+    overflow: hidden;
+    .container {
+        @include size(100vw, 100%);
+        @include color(#fff, $green, null);
+        @include display(flex, row, space-evenly, center);
+        div:nth-child(1) {
+            @include size(40%, auto);
+            @include display(flex, column, center, center);
+            ol {
+                li {
+                    @include size(100%, auto);
+                    @include font("poppins", calc(2em + 1vw), 700);
+                    letter-spacing: 3px;
+                    list-style: inside decimal-leading-zero;
+                }
+                li:nth-child(1) {
+                    @include font(null, calc(0.5em + 1vw), null);
+                    list-style: none;
+                    transform: translateX(-500px);
+                }
+            }
+        }
+        div:nth-child(2) {
+            @include size(40%, auto);
+            @include display(flex, column, center, center);
+            figure {
+                @include size(300px, 380px);
+                img {
+                    @include size(100%, 100%);
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+}
+
+.step2 {
+    @include size(100vw, 100vh);
+    overflow: hidden;
+    .container {
+        @include size(100vw, 100%);
+        @include color($green, #fff, null);
+        @include display(flex, row, center, center);
+        div {
+            @include size(80%, 100%);
+            @include color($green, #fff, null);
+            @include display(flex, column, center, flex-start);
+            transition: 0.5s;
+            span {
+                @include size(100%, auto);
+                @include font("poppins", calc(0.8em + 1vw), 600);
+                margin-bottom: 10px;
+            }
+            ul {
+                li {
+                    @include font("poppins", calc(0.9em + 1vw), 600);
+                    list-style: inside decimal-leading-zero;
+                    a {
+                        color: #fff;
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.step3 {
+    @include size(100vw, 100vh);
+    @include display(flex, row, center, center);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../img/pexels-photo-2330137.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+    .container {
+        @include size(80vw, 100%);
+        @include display(flex, row, flex-start, center);
+        div {
+            @include size(350px, auto);
+            color: #fff;
+            h1 {
+                @include font("baloo 2", calc(1.1em + 1vw), 100);
+            }
+            p {
+                @include font("baloo 2", calc(0.9em + 1vw), 100);
+                a {
+                    color: #fff;
+                }
+            }
+            .form {
+                @include size(100%, 100%);
+                @include display(flex, column, center, center);
+                fieldset {
+                    border: none;
+                    position: relative;
+                }
+                legend {
+                    @include font("baloo 2", 15px, 100);
+                    visibility: hidden;
+                    span {
+                        color: $invalid;
+                    }
+                }
+                input {
+                    @include size(100%, 35px);
+                    @include color(rgba(255, 255, 255, 0.7), #000, null);
+                    margin: 7px auto;
+                    outline: none;
+                    padding-left: 10px;
+                    &::placeholder {
+                        @include font("baloo 2", 0.9rem, null);
+                        color: #000;
+                    }
+                    &:focus {
+                        outline: none;
+                        box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.5);
+                        transition: 0.4s;
+                    }
+                    &:not(:focus) {
+                        transition: 0.4s;
+                    }
+                    &:focus~legend {
+                        visibility: visible;
+                        transition: 0.5s;
+                    }
+                    &:focus::placeholder {
+                        visibility: hidden;
+                    }
+                    &:valid {
+                        box-shadow: 0px 3px 3px $valid;
+                    }
+                    &:valid~legend {
+                        color: $valid;
+                        visibility: visible;
+                        transition: 0.5s;
+                        span {
+                            color: $valid;
+                        }
+                    }
+                    &:not(:placeholder-shown):invalid {
+                        box-shadow: 0px 3px 5px $invalid;
+                    }
+                    &:not(:placeholder-shown):invalid~legend {
+                        color: $invalid;
+                        visibility: visible;
+                        transition: 0.5s;
+                    }
+                }
+                textarea {
+                    @include size(100%, 100px);
+                    @include color(rgba(255, 255, 255, 0.7), null, null);
+                    @include font("baloo 2", 0.9rem, null);
+                    margin: 5px auto 0px;
+                    outline: none;
+                    padding-top: 5px;
+                    padding-left: 10px;
+                    resize: none;
+                    &::placeholder {
+                        @include font("baloo 2", 1rem, null);
+                        color: #000;
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                    &:not(:focus) {
+                        transition: 0.4s;
+                    }
+                }
+                input[type="submit"] {
+                    @include size(100%, 30px);
+                    @include color($green, #fff, none);
+                    @include font("baloo 2", 1.1em, 100);
+                    letter-spacing: 1px;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    @include size(100vw, auto);
+    min-height: 100px;
+    @include display(flex, row, space-between, center);
+    @include color($green, #fff, null);
+    padding: 10px 30px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    div {
+        @include size(auto, auto);
+        p {
+            @include font("poppins", 1rem, 600);
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.next {
+    @include size(100vw, 100vh);
+    @include display(flex, row, center, center);
+    div {
+        @include size(80%, 50vh);
+        @include display(flex, column, center, center);
+        @include color(#2c8560, #fff, null);
+        @include font("poppins", calc(.5em + 1vw), 100);
+        border-radius: 3px;
+    }
+}
